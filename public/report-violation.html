@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Copyright Violation - ValueGuides</title>
+    <style>
+        :root {
+            --purple: #522888;
+            --gold: #BF9553;
+            --dark-purple: #401F6B;
+            --light-gold: #D4AF5A;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background: var(--purple);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: rgba(64, 31, 107, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        h1 {
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: var(--light-gold);
+            margin-top: 2rem;
+        }
+        
+        p {
+            margin: 1rem 0;
+        }
+        
+        .report-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        button {
+            background: var(--gold);
+            color: var(--dark-purple);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        button:hover {
+            background: var(--light-gold);
+        }
+        
+        .special-offer {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(191, 149, 83, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .special-offer h3 {
+            color: var(--gold);
+        }
+        
+        .discount-code {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--gold);
+            color: var(--dark-purple);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .success-message {
+            display: none;
+            background: rgba(0, 128, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="logo">ValueGuides</a>
+    </header>
+    
+    <div class="content">
+        <h1>Report Copyright Violation</h1>
+        
+        <p>Thank you for helping us protect our intellectual property. If you've received an unauthorized copy of our digital product, please report it using the form below. As a gesture of gratitude, we'll provide you with a 50% discount on any of our products.</p>
+        
+        <h2>Why Report Violations?</h2>
+        
+        <p>Our digital products represent significant investment in research, development, and expertise. Unauthorized sharing hurts our ability to create high-quality content and properly serve our customers. By reporting violations, you're helping us maintain the integrity of our work and ensuring we can continue to provide valuable resources.</p>
+        
+        <div class="report-form">
+            <form id="violation-form" onsubmit="return submitReport(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product">Product</label>
+                    <select id="product" name="product" required>
+                        <option value="">Select a product</option>
+                        <option value="travel-planner">The Ultimate Budget Travel Planner</option>
+                        <option value="secret-bundle">Secret Travel Technique Bundle</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="source">Where did you find the unauthorized copy?</label>
+                    <input type="text" id="source" name="source" placeholder="Website URL, email, social media, etc." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="details">Additional Details</label>
+                    <textarea id="details" name="details" placeholder="Please provide any additional information that might help us investigate this violation."></textarea>
+                </div>
+                
+                <button type="submit">Submit Report</button>
+            </form>
+            
+            <div id="success-message" class="success-message">
+                <h3>Thank you for your report!</h3>
+                <p>We appreciate your help in protecting our intellectual property. As a token of our appreciation, please use the discount code below to get 50% off any of our products.</p>
+                <div class="discount-code">THANKYOU50</div>
+                <a href="/" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+        
+        <div class="special-offer">
+            <h3>Get Your Legitimate Copy at 50% Off</h3>
+            <p>We understand you may have received an unauthorized copy and want to do the right thing. As a reward for your integrity, use code <strong>INTEGRITY50</strong> at checkout to receive 50% off your purchase.</p>
+            <a href="/" class="cta-button">Get Your Copy Now</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2023 ValueGuides. All rights reserved.</p>
+    </div>
+    
+    <script>
+        function submitReport(event) {
+            event.preventDefault();
+            
+            // In a real application, you would send this data to your server
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Log the data for demonstration purposes
+            console.log('Report data:', data);
+            
+            // Hide the form
+            document.getElementById('violation-form').style.display = 'none';
+            
+            // Show the success message
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Track the event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'violation_report', {
+                    'event_category': 'copyright',
+                    'event_label': data.product
+                });
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

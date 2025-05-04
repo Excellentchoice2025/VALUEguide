@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - The Ultimate Budget Travel Planner</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'XXXXXXXXXXXXXXXXX');
+      fbq('track', 'PageView');
+    </script>
+    
+    <style>
+        :root {
+            --purple: #522888;
+            --gold: #BF9553;
+            --dark-purple: #401F6B;
+            --light-gold: #D4AF5A;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--purple), var(--dark-purple));
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .checkout-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-summary {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .payment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            color: #333;
+        }
+        
+        #card-element {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .submit-button {
+            width: 100%;
+            background: var(--gold);
+            color: var(--dark-purple);
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-button:hover {
+            background: var(--light-gold);
+        }
+        
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .error {
+            color: #dc3545;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            color: var(--light-gold);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--gold);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="product-summary">
+            <h1>The Ultimate Budget Travel Planner</h1>
+            <p>Experience Luxury Travel at 60% Off Regular Prices</p>
+            <div class="price">$17.99</div>
+            
+            <div class="security-badges">
+                <div class="badge">🔒 Secure Checkout</div>
+                <div class="badge">💳 Stripe Protected</div>
+                <div class="badge">✓ 100% Money Back Guarantee</div>
+            </div>
+        </div>
+        
+        <div class="payment-form">
+            <form id="payment-form">
+                <div id="card-element"></div>
+                <div id="card-errors" class="error"></div>
+                <button id="submit-payment" class="submit-button">
+                    Complete Purchase - $17.99
+                </button>
+            </form>
+            
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Processing your payment...</p>
+            </div>
+        </div>
+        
+        <div class="testimonial">
+            <p>"This planner saved me over $3,000 on my European trip. The hotel upgrade templates alone are worth 10x the price!"</p>
+            <p><strong>- Michael R.</strong></p>
+        </div>
+        
+        <a href="/" class="back-link">Return to homepage</a>
+    </div>
+    
+    <script>
+        // Initialize Stripe
+        const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_your_publishable_key');
+        const elements = stripe.elements();
+        
+        // Create card element
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    fontSize: '16px',
+                    color: '#424770',
+                    '::placeholder': {
+                        color: '#aab7c4',
+                    },
+                },
+                invalid: {
+                    color: '#9e2146',
+                },
+            },
+        });
+        
+        // Mount the card element
+        cardElement.mount('#card-element');
+        
+        // Handle form submission
+        const form = document.getElementById('payment-form');
+        const submitButton = document.getElementById('submit-payment');
+        const loadingElement = document.getElementById('loading');
+        
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            // Disable the submit button to prevent multiple submissions
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+            loadingElement.style.display = 'block';
+            
+            // Create a checkout session on the server
+            try {
+                const response = await fetch('/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('Could not create checkout session');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('An error occurred. Please try again later.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Complete Purchase - $17.99';
+                loadingElement.style.display = 'none';
+            }
+        });
+        
+        // Error handling
+        cardElement.addEventListener('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+        function showError(message) {
+            const errorElement = document.getElementById('card-errors');
+            errorElement.textContent = message;
+        }
+        
+        // Track page view
+        gtag('event', 'page_view', {
+            'page_title': 'Checkout',
+            'page_location': window.location.href,
+            'page_path': '/checkout.html'
+        });
+        fbq('track', 'AddPaymentInfo');
+    </script>
+</body>
+</html>

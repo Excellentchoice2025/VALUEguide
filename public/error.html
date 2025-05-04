@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - ValueGuides</title>
+    <style>
+        :root {
+            --purple: #522888;
+            --gold: #BF9553;
+            --dark-purple: #401F6B;
+            --light-gold: #D4AF5A;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--purple), var(--dark-purple));
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .error-container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            color: var(--gold);
+        }
+        
+        p {
+            margin: 1rem 0;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--gold);
+            color: var(--dark-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .home-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Oops! Something went wrong.</h1>
+        <p id="error-message">We encountered an issue processing your request.</p>
+        <p id="error-suggestion">Please try again later or contact our support team.</p>
+        
+        <a href="mailto:support@valueguides.co" class="contact-link">Contact Support</a>
+        <br>
+        <a href="/" class="home-link">Return to Homepage</a>
+    </div>
+    
+    <script>
+        // Parse error parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+        const suggestion = urlParams.get('suggestion');
+        
+        // Update the error message if provided
+        if (message) {
+            document.getElementById('error-message').textContent = message;
+        }
+        
+        // Update the suggestion if provided
+        if (suggestion) {
+            document.getElementById('error-suggestion').textContent = suggestion;
+        }
+    </script>
+</body>
+</html>

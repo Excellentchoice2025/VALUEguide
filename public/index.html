@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Budget Travel Planner - Experience Luxury at 60% Off</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'XXXXXXXXXXXXXXXXX');
+      fbq('track', 'PageView');
+    </script>
+    
+    <!-- Pinterest -->
+    <script>
+      !function(e){if(!window.pintrk){window.pintrk = function () {
+      window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+        n=window.pintrk;n.queue=[],n.version="3.0";var
+        t=document.createElement("script");t.async=!0,t.src=e;var
+        r=document.getElementsByTagName("script")[0];
+        r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+      pintrk('load', 'XXXXXXXXXXXXX' );
+      pintrk('page');
+    </script>
+    
+    <!-- TikTok Pixel -->
+    <script>
+      !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+        ttq.load('XXXXXXXXXXXXX');
+        ttq.page();
+      }(window, document, 'ttq');
+    </script>
+    
+    <style>
+        :root {
+            --purple: #522888;
+            --gold: #BF9553;
+            --dark-purple: #401F6B;
+            --light-gold: #D4AF5A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background: var(--purple);
+            color: white;
+        }
+        
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(64, 31, 107, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        
+        .btn {
+            background: var(--gold);
+            color: var(--dark-purple);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.2s;
+        }
+        
+        .btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .hero .btn {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .modal-content h3 {
+            color: var(--purple);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-content p {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid var(--purple);
+            border-radius: 5px;
+        }
+        
+        .email-submit {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--purple);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">ValueGuides</div>
+        <a href="#buy-now" class="btn">Buy Now - $17.99</a>
+    </header>
+    
+    <section class="hero">
+        <h1>The Ultimate Budget Travel Planner</h1>
+        <h2>Experience Luxury Travel at 60% Off Regular Prices</h2>
+        <a href="#buy-now" class="btn">Get Started - $17.99</a>
+    </section>
+    
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-number">60%</div>
+            <p>Average Savings on Luxury Hotels</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">72%</div>
+            <p>Success Rate for Suite Upgrades</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">$3,000</div>
+            <p>Average Savings Per Luxury Trip</p>
+        </div>
+    </section>
+    
+    <div class="testimonial">
+        <p>"I saved over $3,000 on my European tour using these strategies. The hotel upgrade technique alone got me a $500/night suite for just $50 extra!"</p>
+        <p><strong>Sarah M.</strong> - Travel Enthusiast</p>
+    </div>
+    
+    <section class="features">
+        <div class="feature-card">
+            <h3>Flight Booking Secrets</h3>
+            <p>Learn exactly when to book for 40-60% savings on premium cabins</p>
+        </div>
+        <div class="feature-card">
+            <h3>Hotel Upgrade Formula</h3>
+            <p>Get suite upgrades 72% of the time with proven email templates</p>
+        </div>
+        <div class="feature-card">
+            <h3>Destination Domination</h3>
+            <p>Hidden gem alternatives to crowded tourist spots</p>
+        </div>
+    </section>
+    
+    <section id="buy-now" style="text-align: center; padding: 4rem 2rem;">
+        <h2>Transform Your Travel Budget Today</h2>
+        <p style="margin-bottom: 2rem;">Complete access to "The Ultimate Budget Travel Planner"</p>
+        <a href="javascript:initiateCheckout()" class="btn" style="font-size: 1.5rem; padding: 1.5rem 3rem;">Get Instant Access - $17.99</a>
+    </section>
+    
+    <!-- Exit Intent Modal -->
+    <div id="exit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Wait! Before You Go...</h3>
+            <p>Get our FREE "Strategic Suite Arbitrage Method" that saved travelers $2,600+ on luxury hotel stays!</p>
+            <form class="email-form" onsubmit="return submitEmail(event)">
+                <input type="email" class="email-input" placeholder="Enter your email" required>
+                <button type="submit" class="email-submit">Get Free Guide</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Exit Intent Detection
+        let exitIntent = false;
+        
+        document.addEventListener('mouseout', function(e) {
+            if (!exitIntent && !e.toElement && !e.relatedTarget) {
+                showExitModal();
+                exitIntent = true;
+            }
+        });
+        
+        function showExitModal() {
+            document.getElementById('exit-modal').style.display = 'flex';
+            gtag('event', 'exit_intent_shown');
+            fbq('track', 'ViewContent');
+        }
+        
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('exit-modal').style.display = 'none';
+        });
+        
+        function submitEmail(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.email-input').value;
+            
+            // Track email capture
+            gtag('event', 'generate_lead', {
+                'event_category': 'engagement',
+                'event_label': 'exit_intent'
+            });
+            fbq('track', 'Lead');
+            
+            // Send the email to the backend
+            fetch('/api/capture-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email })
+            });
+            
+            alert('Thank you! Check your email for the free guide.');
+            document.getElementById('exit-modal').style.display = 'none';
+        }
+        
+        // Function to initiate checkout
+        function initiateCheckout() {
+            // Track checkout click
+            gtag('event', 'begin_checkout', {
+                'event_category': 'ecommerce',
+                'event_label': 'checkout_click'
+            });
+            fbq('track', 'InitiateCheckout');
+            
+            // Create a checkout session
+            fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    alert('Something went wrong. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again later.');
+            });
+        }
+        
+        // Track button clicks
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if (!this.href || this.href.indexOf('#buy-now') > -1) {
+                    gtag('event', 'purchase_intent', {
+                        'event_category': 'ecommerce',
+                        'event_label': 'buy_button_click'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

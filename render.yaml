@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: valueguides-app
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DOMAIN
+        value: valueguides.co
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: STRIPE_PRICE_ID
+        sync: false
+      - key: STRIPE_UPSELL_PRICE_ID
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: PDF_TEMPLATE_PATH
+        value: ./assets/travel-planner-template.pdf
+      - key: DOWNLOAD_EXPIRY_HOURS
+        value: 24
+      - key: MAX_DOWNLOADS
+        value: 3
+      - key: GOOGLE_ANALYTICS_ID
+        sync: false
+      - key: FACEBOOK_PIXEL_ID
+        sync: false
+      - key: TIKTOK_PIXEL_ID
+        sync: false
+      - key: PINTEREST_TAG_ID
+        sync: false
